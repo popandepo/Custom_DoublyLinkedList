@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomDoublyLinkedList", "CustomDoublyLinkedList\CustomDoublyLinkedList.csproj", "{E55D7862-4162-4675-924B-7193A3C08BEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLTests", "DLLTests\DLLTests.csproj", "{DAB77489-7049-4F80-9091-1D75F5F9B3D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomDoublyLinkedListTests", "CustomDoublyLinkedListTests\CustomDoublyLinkedListTests.csproj", "{DAB77489-7049-4F80-9091-1D75F5F9B3D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

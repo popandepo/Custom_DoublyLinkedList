@@ -1,10 +1,10 @@
 using CustomDoublyLinkedList;
 
-namespace DLLTests;
+namespace CustomDoublyLinkedListTests;
 
 public class DoublyLinkedListTests
 {
-	[Fact]
+	[Test]
 	public void TestAdd()
 	{
 		// Arrange
@@ -17,12 +17,12 @@ public class DoublyLinkedListTests
 		list.Add(node2);
 
 		// Assert
-		Assert.Equal(2, list.Count);
-		Assert.Equal(node1, list.Head);
-		Assert.Equal(node2, list.Tail);
+		Assert.AreEqual(2, list.Count);
+		Assert.AreEqual(node1, list.Head);
+		Assert.AreEqual(node2, list.Tail);
 	}
 
-	[Fact]
+	[Test]
 	public void TestRemove()
 	{
 		// Arrange
@@ -36,12 +36,12 @@ public class DoublyLinkedListTests
 		list.Remove(node1);
 
 		// Assert
-		Assert.Equal(1, list.Count);
-		Assert.Equal(node2, list.Head);
-		Assert.Equal(node2, list.Tail);
+		Assert.AreEqual(1, list.Count);
+		Assert.AreEqual(node2, list.Head);
+		Assert.AreEqual(node2, list.Tail);
 	}
 
-	[Fact]
+	[Test]
 	public void TestInsertAhead()
 	{
 		// Arrange
@@ -56,14 +56,14 @@ public class DoublyLinkedListTests
 		list.InsertAhead(node3);
 
 		// Assert
-		Assert.Equal(3, list.Count);
-		Assert.Equal(node1, list.Head);
-		Assert.Equal(node2, list.Head.Next);
-		Assert.Equal(node2, list.Tail.Previous);
-		Assert.Equal(node3, list.Tail);
+		Assert.AreEqual(3, list.Count);
+		Assert.AreEqual(node1, list.Head);
+		Assert.AreEqual(node2, list.Head.Next);
+		Assert.AreEqual(node2, list.Tail.Previous);
+		Assert.AreEqual(node3, list.Tail);
 	}
 
-	[Fact]
+	[Test]
 	public void TestInsertBehind()
 	{
 		// Arrange
@@ -78,14 +78,14 @@ public class DoublyLinkedListTests
 		list.InsertBehind(node1);
 
 		// Assert
-		Assert.Equal(3, list.Count);
-		Assert.Equal(node1, list.Head);
-		Assert.Equal(node2, list.Head.Next);
-		Assert.Equal(node2, list.Tail.Previous);
-		Assert.Equal(node3, list.Tail);
+		Assert.AreEqual(3, list.Count);
+		Assert.AreEqual(node1, list.Head);
+		Assert.AreEqual(node2, list.Head.Next);
+		Assert.AreEqual(node2, list.Tail.Previous);
+		Assert.AreEqual(node3, list.Tail);
 	}
 
-	[Fact]
+	[Test]
 	public void TestFromList()
 	{
 		// Arrange
@@ -96,11 +96,11 @@ public class DoublyLinkedListTests
 		list.FromList(sourceList);
 
 		// Assert
-		Assert.Equal(3, list.Count);
-		Assert.Equal("1\r\n2\r\n3", list.ToString());
+		Assert.AreEqual(3, list.Count);
+		Assert.AreEqual("1\r\n2\r\n3", list.ToString());
 	}
 
-	[Fact]
+	[Test]
 	public void TestToList()
 	{
 		// Arrange
@@ -116,9 +116,9 @@ public class DoublyLinkedListTests
 		var result = list.ToList();
 
 		// Assert
-		Assert.Equal(3, result.Count);
-		Assert.Equal(1, result[0]);
-		Assert.Equal(2, result[1]);
-		Assert.Equal(3, result[2]);
+		Assert.AreEqual(3, result.Count);
+		Assert.AreEqual(1, result[0]);
+		Assert.AreEqual(2, result[1]);
+		Assert.AreEqual(3, result[2]);
 	}
 }
