@@ -1,23 +1,24 @@
 ﻿using CustomDoublyLinkedList;
+
 namespace CustomDoublyLinkedListTests;
 
 public class NodeTests
 {
 	[Test]
-	public void TestNodeContent()
+	public void NodeContent()
 	{
 		// Arrange
 		var node = new Node<int>(5);
 
 		// Act
-		var content = node.Content;
+		int content = node.Content;
 
 		// Assert
 		Assert.AreEqual(5, content);
 	}
 
 	[Test]
-	public void TestNodeNext()
+	public void NodeNext()
 	{
 		// Arrange
 		var node1 = new Node<int>(5);
@@ -32,7 +33,7 @@ public class NodeTests
 	}
 
 	[Test]
-	public void TestNodePrevious()
+	public void NodePrevious()
 	{
 		// Arrange
 		var node1 = new Node<int>(5);
@@ -47,7 +48,7 @@ public class NodeTests
 	}
 
 	[Test]
-	public void TestNodeToString()
+	public void NodeToString()
 	{
 		// Arrange
 		var node = new Node<int>(5);

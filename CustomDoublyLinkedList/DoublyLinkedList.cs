@@ -93,8 +93,8 @@ public class DoublyLinkedList<T>
 	/// <param name="node">The node to remove. If no node is provided, the currently selected node is removed.</param>
 	public void Remove(Node<T>? node = null)
 	{
-		node ??= Selected!;
-		Selected = node;
+		Selected = node ?? Selected;
+
 		if (Selected.Previous is not null)
 			Selected.Previous.Next = Selected.Next;
 		else
@@ -118,8 +118,7 @@ public class DoublyLinkedList<T>
 	/// </param>
 	public void InsertAhead(Node<T> newNode, Node<T>? node = null)
 	{
-		node ??= Selected;
-		Selected = node ?? Tail;
+		Selected = node ?? Selected;
 
 		if (Selected == Tail)
 		{
@@ -148,8 +147,7 @@ public class DoublyLinkedList<T>
 	/// </param>
 	public void InsertBehind(Node<T> newNode, Node<T>? node = null)
 	{
-		node ??= Selected;
-		Selected = node ?? Head;
+		Selected = node ?? Selected;
 
 		if (Selected == Head)
 		{
@@ -198,31 +196,14 @@ public class DoublyLinkedList<T>
 	{
 		var output = "";
 
-		Selected = Head;
+		var selected = Head;
 
-		while (Selected is not null)
+		while (selected is not null)
 		{
-			output += Selected + Environment.NewLine;
-			Selected = Selected.Next;
+			output += selected + Environment.NewLine;
+			selected = selected.Next;
 		}
 
 		return output.TrimEnd();
-	}
-}
-
-public class Node<T>
-{
-	public Node(T content)
-	{
-		Content = content;
-	}
-
-	public T? Content { get; set; }
-	public Node<T>? Next { get; set; }
-	public Node<T>? Previous { get; set; }
-
-	public override string ToString()
-	{
-		return Content.ToString();
 	}
 }
