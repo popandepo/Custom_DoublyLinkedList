@@ -9,19 +9,22 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: Determine Version
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.15
+      with:
+        versionSpec: '5.x'
+    - name: Get version
+      run: gitversion /output json /showvariable SemVer
       id: gitversion
-      uses: gittools/actions/gitversion/execute@v0.9.15
     - name: Build
       run: dotnet build --configuration Release
     - name: Test
-      run: dotnet test --configuration Release --no-build
+      run: dotnet test --configuration Release --no-build 
       if: success()
     - name: Pack
       run: dotnet pack --configuration Release --output nuget --version-suffix ${{ steps.gitversion.outputs.semVer }}
