@@ -41,7 +41,7 @@ jobs:
       uses: dorny/test-reporter@v1.5.0
       with:
         name: NUnit tests
-        path: D:\a\Custom_DoublyLinkedList\Custom_DoublyLinkedList\CustomDoublyLinkedListTests\TestResults\NUnit-results.trx
+        path: /home/runner/work/Custom_DoublyLinkedList/Custom_DoublyLinkedList/CustomDoublyLinkedListTests/TestResults/NUnit-results.trx
         reporter: dotnet-trx
       
     - if: success()
