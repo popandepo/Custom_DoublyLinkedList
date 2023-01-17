@@ -42,7 +42,7 @@ jobs:
         reporter: dotnet-trx
       
     - if: success()
-    - name: Pack
+      name: Pack
       run: dotnet pack --configuration Release --output nuget --version-suffix ${{ steps.gitversion.outputs.semVer }}
       
     - name: Publish to NuGet
