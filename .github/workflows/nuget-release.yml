@@ -39,7 +39,7 @@ jobs:
       if: success()
       
     - name: Pack
-      run: dotnet pack --configuration Release --output nuget --version ${{ steps.gitversion.outputs.MajorMinorPatch }}.${{steps.gitversion.outputs.BuildMetaData}}
+      run: dotnet pack --configuration Release --output nuget -p:PackageVersion=${{ steps.gitversion.outputs.MajorMinorPatch }}.${{steps.gitversion.outputs.BuildMetaData}}
       
     - name: Publish to NuGet
       run: nuget push D:\a\Custom_DoublyLinkedList\Custom_DoublyLinkedList\nuget\CustomDoublyLinkedList*${{ steps.gitversion.outputs.MajorMinorPatch }}.${{steps.gitversion.outputs.BuildMetaData}}.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{ secrets.NUGET_API_KEY }}
