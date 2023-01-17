@@ -35,8 +35,8 @@ jobs:
       run: dotnet restore
       
     - name: Test
-      run: dotnet test "--project CustomDoublyLinkedListTests"
-    - run: dotnet test "--project CustomDoublyLinkedListTests.csproj"
+      run: dotnet test --project CustomDoublyLinkedListTests
+    - run: dotnet test --project CustomDoublyLinkedListTests.csproj
       if: success()
       
     - name: Pack
