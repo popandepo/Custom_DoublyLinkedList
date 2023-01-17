@@ -20,6 +20,7 @@ public class DoublyLinkedListTests
 		Assert.AreEqual(2, list.Count);
 		Assert.AreEqual(node1, list.Head);
 		Assert.AreEqual(node2, list.Tail);
+		Assert.AreEqual(true,false);
 	}
 
 	[Test]
