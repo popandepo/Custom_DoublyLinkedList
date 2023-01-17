@@ -29,7 +29,10 @@ jobs:
       uses: gittools/actions/gitversion/execute@v0.9.15
       
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build
+      
+    - name: Restore
+      run: dotnet restore
       
     - name: Test
       run: dotnet test --logger "trx;LogFileName=NUnit-results.trx"
@@ -38,7 +41,7 @@ jobs:
       uses: dorny/test-reporter@v1.5.0
       with:
         name: NUnit tests
-        path: /home/runner/work/GithubTestSystem/GithubTestSystem/GithubTestSystemTests/TestResults/NUnit-results.trx
+        path: D:\a\Custom_DoublyLinkedList\Custom_DoublyLinkedList\CustomDoublyLinkedListTests\TestResults\NUnit-results.trx
         reporter: dotnet-trx
       
     - if: success()
