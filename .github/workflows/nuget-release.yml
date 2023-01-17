@@ -1,0 +1,30 @@
+name: NuGet Release
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 5.0.x
+    - name: Install GitVersion
+      run: dotnet tool install --global GitVersion.Tool --version 5.1.4
+    - name: Get version
+      run: gitversion /output json /showvariable SemVer
+      id: gitversion
+    - name: Build
+      run: dotnet build --configuration Release
+    - name: Test
+      run: dotnet test --configuration Release --no-build 
+      if: success()
+    - name: Pack
+      run: dotnet pack --configuration Release --output nuget --version-suffix $(cat version.txt)
+    - name: Publish to NuGet
+      run: nuget push nuget/*.$(cat version.txt).nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{ secrets.NUGET_API_KEY }}
