@@ -35,11 +35,12 @@ jobs:
       run: dotnet restore
       
     - name: Test
-      run: dotnet test
+      run: dotnet test "--project CustomDoublyLinkedListTests"
+    - run: dotnet test "--project CustomDoublyLinkedListTests.csproj"
       if: success()
       
     - name: Pack
       run: dotnet pack --configuration Release --output nuget --version-suffix ${{ steps.gitversion.outputs.semVer }}
       
     - name: Publish to NuGet
-      run: nuget push nuget/*.${{ steps.gitversion.outputs.semVer }}.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{ secrets.NUGET_API_KEY }}
+      run: nuget push nuget\*.${{ steps.gitversion.outputs.semVer }}.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey ${{ secrets.NUGET_API_KEY }}
