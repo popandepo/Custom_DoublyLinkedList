@@ -32,9 +32,16 @@ jobs:
       run: dotnet build --configuration Release
       
     - name: Test
-      run: dotnet test --configuration Release
-      if: success()
+      run: dotnet test --logger "trx;LogFileName=NUnit-results.trx"
+    - name: Generate test report
+      if: success() || failure()
+      uses: dorny/test-reporter@v1.5.0
+      with:
+        name: NUnit tests
+        path: /home/runner/work/GithubTestSystem/GithubTestSystem/GithubTestSystemTests/TestResults/NUnit-results.trx
+        reporter: dotnet-trx
       
+    - if: success()
     - name: Pack
       run: dotnet pack --configuration Release --output nuget --version-suffix ${{ steps.gitversion.outputs.semVer }}
       
