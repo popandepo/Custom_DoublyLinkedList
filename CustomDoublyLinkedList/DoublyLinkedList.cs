@@ -72,6 +72,10 @@ public class DoublyLinkedList<T>
 		foreach (var content in list) Add(new Node<T>(content));
 	}
 
+	/// <summary>
+	/// Adds a new node to the end of the list or makes it the first and last node if the list is empty
+	/// </summary>
+	/// <param name="node"></param>
 	public void Add(Node<T> node)
 	{
 		if (Head is null || Tail is null)
